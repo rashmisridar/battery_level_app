@@ -26,8 +26,10 @@ class BatteryBloc extends Bloc<BatteryEvent, BatteryTickerState> {
        String batteryCategory =_getBatteryCategory(batteryLevel);
        /// Based on the battery category battery indicator in the ui is displayed in green, orange, and red color
        Color batteryIndicatory = batteryIndicator(batteryCategory)??ColorUtils.green;
-       ///Adding batteryStatus to local data base
-       batteryStatusInsertQuery(batteryLevel,batteryCategory);
+       if(event.addDB) {
+         ///Adding batteryStatus to local data base
+         batteryStatusInsertQuery(batteryLevel, batteryCategory);
+       }
        ///Sending the data in stream
         await emit.onEach<BatteryState>(
          battery.onBatteryStateChanged,

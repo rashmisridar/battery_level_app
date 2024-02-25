@@ -10,7 +10,8 @@ sealed class BatteryEvent extends Equatable {
 
 
 final class BatteryEventStarted extends BatteryEvent {
-  const BatteryEventStarted();
+ final bool addDB;
+  const BatteryEventStarted({required this.addDB});
 }
 
 final class _BatteryStatus extends BatteryEvent {

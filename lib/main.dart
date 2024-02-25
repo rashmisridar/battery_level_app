@@ -30,7 +30,7 @@ void backgroundFetchHeadlessTask(HeadlessTask task) async {
     BackgroundFetch.finish(taskId);
     return;
   }
-  parentKey.currentState!.context.read<BatteryBloc>().add(const BatteryEventStarted());
+  parentKey.currentState!.context.read<BatteryBloc>().add(const BatteryEventStarted(addDB: true));
 
   if (taskId == 'flutter_background_fetch') {
     BackgroundFetch.scheduleTask(TaskConfig(
