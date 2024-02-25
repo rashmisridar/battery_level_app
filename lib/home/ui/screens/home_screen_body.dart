@@ -20,12 +20,6 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
   void initState() {
     super.initState();
     /// Every 15min fetching the battery status
- /*   const duration = Duration(minutes: 15);
-    Timer.periodic(duration, (Timer timer) {
-      if(mounted) {
-        context.read<BatteryBloc>().add(const BatteryEventStarted());
-      }
-    });*/
     // Initialize the background fetch
     initPlatformState();
   }
