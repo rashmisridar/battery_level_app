@@ -19,9 +19,7 @@ buildscript {
 
 allprojects {
     repositories {
-        maven {
-            url "${project(':background_fetch').projectDir}/libs"
-        }
+
         google()
         mavenCentral()
     }
