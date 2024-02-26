@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:battery_level_app/home/data/battery_model.dart';
 import 'package:battery_level_app/home/data/repository/history_repository.dart';
+import 'package:battery_level_app/home/data/view_model_bloc/battery_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -51,8 +52,20 @@ class BatteryHistoryFailure extends BatteryHistoryState {
 // BLoC
 class BatteryHistoryBloc extends Bloc<BatteryHistoryEvent, BatteryHistoryState> {
   final BatteryHistoryRepository batteryHistoryRepository;
+  final _batteryHistoryController = StreamController<List<BatteryModel>>.broadcast();
 
+  // Expose a stream for the UI to listen to
+  Stream<List<BatteryModel>> get streamData => _batteryHistoryController.stream;
 
+  // Method to add new data to the stream
+  void updateOrderList(List<BatteryModel> batteryList) {
+    _batteryHistoryController.add(batteryList);
+  }
+
+  // Clean up resources when the BLoC is no longer needed
+  void dispose() {
+    _batteryHistoryController.close();
+  }
 
   BatteryHistoryBloc({required this.batteryHistoryRepository}) : super(BatteryHistoryInitial())
   {
@@ -68,6 +81,8 @@ class BatteryHistoryBloc extends Bloc<BatteryHistoryEvent, BatteryHistoryState> 
         List<BatteryModel>? batterModelList = await batteryHistoryRepository.fetchBatteryHistory();
 
         emit(BatteryHistorySuccess( batteryModelList:batterModelList));
+        _batteryHistoryController.add(batterModelList!);
+
       } catch (e) {
         emit(BatteryHistoryFailure(message: e.toString()));
       }
