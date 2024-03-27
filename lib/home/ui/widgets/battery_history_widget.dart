@@ -1,4 +1,4 @@
-import 'package:battery_level_app/home/data/battery_model.dart';
+import 'package:battery_level_app/home/data/model/battery_model.dart';
 import 'package:battery_level_app/utils/string_utils.dart';
 import 'package:battery_level_app/utils/util.dart';
 import 'package:flutter/material.dart';

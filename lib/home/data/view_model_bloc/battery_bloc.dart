@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:battery_level_app/home/data/battery_model.dart';
+import 'package:battery_level_app/home/data/model/battery_model.dart';
 import 'package:battery_level_app/home/data/data_source/history_local_data_source.dart';
 import 'package:battery_level_app/utils/color_utils.dart';
 import 'package:battery_plus/battery_plus.dart';

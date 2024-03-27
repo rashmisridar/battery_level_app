@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:battery_level_app/home/data/battery_model.dart';
+import 'package:battery_level_app/home/data/model/battery_model.dart';
 import 'package:battery_level_app/home/data/repository/history_repository.dart';
 import 'package:battery_level_app/home/data/view_model_bloc/battery_bloc.dart';
 import 'package:equatable/equatable.dart';

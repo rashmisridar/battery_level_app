@@ -1,5 +1,5 @@
 // database_helper.dart
-import 'package:battery_level_app/home/data/battery_model.dart';
+import 'package:battery_level_app/home/data/model/battery_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
